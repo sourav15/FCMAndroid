@@ -1,20 +1,40 @@
 package com.sourav.fcm.activities;
 
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.sourav.fcm.R;
+import com.sourav.fcm.helpers.AjaxHelper;
+import com.sourav.fcm.helpers.beans.response.ResponseBean;
 
 
 public class AppActivity extends AppCompatActivity {
+
+    EditText mobileno;
+    EditText password;
+    Button signin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app);
+        mobileno = (EditText) findViewById(R.id.mobileEditText);
+        password = (EditText) findViewById(R.id.passwordEditText);
+        signin = (Button) findViewById(R.id.signInButton);
+
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -38,4 +58,19 @@ public class AppActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    class SignIn extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            ResponseBean response = AjaxHelper.ajax();
+            return null;
+        }
+    }
+
 }
